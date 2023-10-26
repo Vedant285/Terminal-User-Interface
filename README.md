@@ -1,7 +1,7 @@
 # Terminal-User-Interface
 Developed a Command Line Interface (CLI) program in C++ to facilitate various system administration tasks, including user management, software installation, server configuration, and network monitoring.
 
-Password Security: Implemented secure password handling using industry-standard practices to ensure user data confidentiality and prevent unauthorized access.
+Implemented secure password handling using industry-standard practices to ensure user data confidentiality and prevent unauthorized access.
     
 Enabled seamless interaction with remote servers through Secure Shell (SSH) protocol, allowing users to execute commands and manage operations remotely.
     
