@@ -6,7 +6,6 @@
 int main() {
     std::system("tput setaf 1");
     std::cout << "\t\tHey Welcome ! to my TUI that makes life Simple" << std::endl;
-    std::system("tput setaf 7");
     std::cout << "\t\t---------------------------------------------" << std::endl;
     std::cout << "Enter the password: " << std::endl;
     
@@ -16,9 +15,7 @@ int main() {
     bool flag = true;
     while (password != "ved") {
         if (wrong_pass == 1) {
-            std::system("tput setaf 4");
             std::cout << "You entered the wrong job- Now you have 2 chances to write it correctly" << std::endl;
-            std::system("tput setaf 7");
         }
         std::cout << "You entered the wrong password!" << std::endl;
         std::cout << "Again, Enter your password: ";
@@ -26,9 +23,7 @@ int main() {
         wrong_pass++;
         if (wrong_pass == 3) {
             if (password != "ved") {
-                std::system("tput setaf 1");
                 std::cout << "Sorry! You entered the wrong password 3 times!" << std::endl;
-                std::system("tput setaf 7");
                 exit(0);
             }
         }
@@ -52,36 +47,31 @@ int main() {
         }
     }
     if (wrongjob == 4) {
-        std::system("tput setaf 1");
         std::cout << "You entered the wrong job 3 times! \n Please try again after some time" << std::endl;
-        std::system("tput setaf 7");
         exit(0);
     }
     std::string remoteIp;
     if (location == "remote") {
-        std::system("tput setaf 3");
         std::cout << "In which server do you want to run: " << std::endl;
         std::cout << "Enter remote Ip address: ";
         std::cin >> remoteIp;
-        std::system("tput setaf 7");
     }
 
     while (true) {
-        std::system("tput setaf 6");
         std::cout << "\t\t    Press 1 : For Printing the date" << std::endl;
         std::cout << "\t\t    Press 2 : For Checking the Calendar" << std::endl;
         std::cout << "\t\t    Press 3 : For Add New User" << std::endl;
-        std::cout << "\t\t    Press 8 : For checking the user" << std::endl;
         std::cout << "\t\t    Press 4 : For Creating the folder" << std::endl;
         std::cout << "\t\t    Press 5 : For Downloading any software" << std::endl;
         std::cout << "\t\t    Press 6 : For Uninstalling any software" << std::endl;
+        std::cout << "\t\t    Press 7 : for exit from this software" << std::endl;
+        std::cout << "\t\t    Press 8 : For checking the user" << std::endl;
         std::cout << "\t\t    Press 9 : For Configuring your Web Server" << std::endl;
         std::cout << "\t\t    Press 10: To check all Network card and IP address" << std::endl;
         std::cout << "\t\t    Press 11: For seeing the Port number related to many servers" << std::endl;
-        std::cout << "\t\t    Press 7 : for exit from this software" << std::endl;
+        
         std::cout << "*******************************************************************************" << std::endl;
 
-        std::system("tput setaf 7");
         std::cout << "Enter your choice: ";
         int ch;
         std::cin >> ch;
@@ -115,11 +105,8 @@ int main() {
                 std::system(("dnf remove " + Uninstall_Software).c_str());
                 std::system("tput setaf 2");
                 std::cout << "Software is completely removed!" << std::endl;
-                std::system("tput setaf 7");
             } else if (ch == 7) {
-                std::system("tput setaf 2");
                 std::cout << "Thank you! for using this Software." << std::endl;
-                std::system("tput setaf 7");
                 exit(0);
             } else if (ch == 8) {
                 std::cout << "Enter User Name you want to check: ";
@@ -127,27 +114,17 @@ int main() {
                 std::cin >> User_Name;
                 std::system(("id " + User_Name).c_str());
             } else if (ch == 9) {
-                std::system("tput setaf 2");
                 std::cout << "Initializing web server: HTTPD" << std::endl;
-                std::system("tput setaf 7");
                 std::system("dnf install httpd");
-                std::system("tput setaf 2");
                 std::cout << "Your web server is installed" << std::endl;
-                std::system("tput setaf 7");
                 std::system("systemctl start httpd");
-                std::system("tput setaf 2");
                 std::cout << "Your services HTTPD are started" << std::endl;
-                std::system("tput setaf 7");
                 std::system("systemctl stop firewalld");
             } else if (ch == 10) {
-                std::system("tput setaf 2");
                 std::cout << "Network cards are: " << std::endl;
-                std::system("tput setaf 7");
                 std::system("ifconfig");
             } else if (ch == 11) {
-                std::system("tput setaf 2");
                 std::cout << "Network cards are: " << std::endl;
-                std::system("tput setaf 7");
                 std::system("netstat -tnlp");
             } else {
                 std::cout << "wrong input" << std::endl;
@@ -183,13 +160,9 @@ int main() {
                 std::string Uninstall_Software;
                 std::cin >> Uninstall_Software;
                 std::system(("ssh " + remoteIp + " dnf remove " + Uninstall_Software).c_str());
-                std::system("tput setaf 2");
                 std::cout << "Software is completely removed!" << std::endl;
-                std::system("tput setaf 7");
             } else if (ch == 7) {
-                std::system("tput setaf 2");
                 std::cout << "Thank you! for using this Software." << std::endl;
-                std::system("tput setaf 7");
                 exit(0);
             } else if (ch == 8) {
                 std::cout << "Enter User Name you want to check: ";
@@ -197,27 +170,17 @@ int main() {
                 std::cin >> User_Name;
                 std::system(("ssh " + remoteIp + " id " + User_Name).c_str());
             } else if (ch == 9) {
-                std::system("tput setaf 2");
                 std::cout << "Initializing web server: HTTPD" << std::endl;
-                std::system("tput setaf 7");
                 std::system(("ssh " + remoteIp + " dnf install httpd").c_str());
-                std::system("tput setaf 2");
                 std::cout << "Your web server is installed" << std::endl;
-                std::system("tput setaf 7");
                 std::system(("ssh " + remoteIp + " systemctl start httpd").c_str());
-                std::system("tput setaf 2");
                 std::cout << "Your services HTTPD are started" << std::endl;
-                std::system("tput setaf 7");
                 std::system(("ssh " + remoteIp + " systemctl stop firewalld").c_str());
             } else if (ch == 10) {
-                std::system("tput setaf 2");
                 std::cout << "Network cards are: " << std::endl;
-                std::system("tput setaf 7");
                 std::system(("ssh " + remoteIp + " ifconfig").c_str());
             } else if (ch == 11) {
-                std::system("tput setaf 2");
                 std::cout << "Network cards are: " << std::endl;
-                std::system("tput setaf 7");
                 std::system(("ssh " + remoteIp + " 'netstat -tnlp'").c_str());
             } else {
                 std::cout << "wrong input" << std::endl;
